@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".StepOneActivity">
+
+
+    <TextView
+        android:id="@+id/receivedText"
+        android:layout_width="384dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="38dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:gravity="center"
+        android:text=""
+        android:textColor="#000000"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textViewTwo"
+        android:layout_width="369dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/receivedText"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="25dp"
+        android:gravity="center"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="С каким местоимением вы хотите создать персонажа?"
+        android:textColor="#000000"
+        android:textSize="15dp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/selectButtonShe"
+        android:layout_width="195dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewTwo"
+        android:layout_marginLeft="110dp"
+        android:layout_marginTop="30dp"
+        android:elevation="4dp"
+        android:gravity="center"
+        android:paddingStart="16dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="8dp"
+        android:text="Она"
+        android:background="@drawable/rounded_button"
+        android:textColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/selectButtonHe"
+        android:layout_width="195dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/selectButtonShe"
+        android:layout_marginLeft="110dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/rounded_button"
+        android:elevation="4dp"
+        android:gravity="center"
+        android:paddingStart="16dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="8dp"
+        android:text="Он"
+        android:textColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/selectButtonThey"
+        android:layout_width="195dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/selectButtonHe"
+        android:layout_marginLeft="110dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/rounded_button"
+        android:elevation="4dp"
+        android:gravity="center"
+        android:paddingStart="16dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="8dp"
+        android:text="Они"
+        android:textColor="@android:color/white" />
+
+    <TextView
+        android:id="@+id/textViewThree"
+        android:layout_width="300dp"
+        android:layout_height="36dp"
+        android:layout_below="@+id/selectButtonThey"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="58dp"
+        android:layout_marginLeft="58dp"
+        android:layout_marginTop="101dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="170dp"
+        android:gravity="center"
+        android:text="Далее"
+        android:textColor="#000000"
+        android:textSize="15dp"
+        android:clickable="true"
+        android:textStyle="bold" />
+
+</RelativeLayout>
