@@ -11,6 +11,7 @@ import android.view.animation.Animation
 import android.view.animation.TranslateAnimation
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import java.io.ByteArrayOutputStream
 
@@ -32,7 +33,7 @@ class CharacterHeActivity : AppCompatActivity() {
         avatar2.setOnClickListener { selectCharacter(R.drawable.avatartwo) }
         avatar3.setOnClickListener { selectCharacter(R.drawable.avatarthree) }
 
-        val chooseButton = findViewById<Button>(R.id.chooseButton)
+        val chooseButton = findViewById<TextView>(R.id.chooseButton)
         chooseButton.setOnClickListener { onChooseButtonClick() }
     }
 
@@ -52,7 +53,7 @@ class CharacterHeActivity : AppCompatActivity() {
             val sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
             sharedPreferences.edit().putBoolean("reachedChatActivity", true).apply()
 
-            val intent = Intent(this, Chat::class.java)
+            val intent = Intent(this, CharacterDescription::class.java)
             intent.putExtra("imageByteArray", byteArray)
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
             startActivity(intent)

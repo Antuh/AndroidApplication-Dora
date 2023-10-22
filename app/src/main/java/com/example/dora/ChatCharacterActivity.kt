@@ -15,7 +15,7 @@ import org.json.JSONObject
 import java.io.IOException
 
 class ChatCharacterActivity : AppCompatActivity() {
-    val API_KEY = "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"
+    val API_KEY = "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"
     lateinit var recyclerView: RecyclerView
     lateinit var welcomeText :TextView
     lateinit var messageEditText:EditText
@@ -23,8 +23,7 @@ class ChatCharacterActivity : AppCompatActivity() {
     lateinit var messageList:MutableList<Message>
     lateinit var messageAdapter:MessageAdapter
     val client = OkHttpClient()
-
-
+    //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
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
