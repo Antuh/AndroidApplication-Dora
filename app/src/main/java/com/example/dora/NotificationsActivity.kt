@@ -61,7 +61,7 @@ class NotificationsActivity : AppCompatActivity() {
                     RazrButton -> {
                         if (isNotificationPermissionGranted()) {
                             val characterName = intent.getStringExtra("characterName")
-                            val purposeIntent = Intent(this, PurposesActivity::class.java)
+                            val purposeIntent = Intent(this, InterestsActivity::class.java)
                             purposeIntent.putExtra("characterName", characterName)
                             startActivity(purposeIntent)
                         } else {
@@ -72,7 +72,7 @@ class NotificationsActivity : AppCompatActivity() {
                     }
                     NoRazrButton -> {
                         val characterName = intent.getStringExtra("characterName")
-                        val purposeIntent = Intent(this, PurposesActivity::class.java)
+                        val purposeIntent = Intent(this, InterestsActivity::class.java)
                         purposeIntent.putExtra("characterName", characterName)
                         startActivity(purposeIntent)
                     }

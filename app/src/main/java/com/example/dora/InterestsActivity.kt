@@ -42,8 +42,10 @@ class InterestsActivity : AppCompatActivity() {
 
         chooseButton.setOnClickListener {
             if (selectedButtons.size == 5) {
-                val intent = Intent(this, PurposesActivity::class.java)
-                startActivity(intent)
+                val characterName = intent.getStringExtra("characterName")
+                val purposeIntent = Intent(this, PurposesActivity::class.java)
+                purposeIntent.putExtra("characterName", characterName)
+                startActivity(purposeIntent)
             }
         }
     }
