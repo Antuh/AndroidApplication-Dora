@@ -7,6 +7,7 @@ import android.graphics.BitmapFactory
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
@@ -19,13 +20,28 @@ class CharacterNameActivity : AppCompatActivity() {
         val sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
         val imageByteArray = intent.getByteArrayExtra("imageByteArray")
 
+        val imageView = findViewById<ImageView>(R.id.your_image_view_id)
+        val button = findViewById<TextView>(R.id.chooseButton)
+        val editText = findViewById<EditText>(R.id.textInputs)
+
         if (imageByteArray != null) {
             val selectedImage =
                 BitmapFactory.decodeByteArray(imageByteArray, 0, imageByteArray.size)
-            val imageView = findViewById<ImageView>(R.id.your_image_view_id)
             imageView.setImageBitmap(selectedImage)
-
             sharedPreferences.edit().putBoolean("imageLoaded", true).apply()
+        }
+
+        button.setOnClickListener {
+            val enteredName = editText.text.toString()
+
+            if (enteredName.isNotEmpty()) {
+                val intent = Intent(this, NotificationsActivity::class.java)
+                intent.putExtra("imageByteArray", imageByteArray)
+                intent.putExtra("characterName", enteredName)
+                startActivity(intent)
+            } else {
+                editText.error = "Введите имя"
+            }
         }
     }
 }

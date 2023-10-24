@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff">
+
+    <TextView
+        android:id="@+id/textViewOne"
+        android:layout_width="234dp"
+        android:layout_height="36dp"
+        android:layout_below="@+id/textViewTwo"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="90dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginBottom="3dp"
+        android:clickable="true"
+        android:gravity="center"
+        android:text="Выберите ваши интересы"
+        android:textColor="#000000"
+        android:textSize="15dp"
+        android:textStyle="bold" />
+
+
+
+    <TextView
+        android:id="@+id/textViewTwo"
+        android:layout_width="117dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="149dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="35dp"
+        android:clickable="true"
+        android:gravity="center"
+        android:text="Шаг 7/10"
+        android:textColor="#000000"
+        android:textSize="15dp"
+        android:textStyle="bold" />
+
+
+    <TextView
+        android:id="@+id/chooseButton"
+        android:layout_width="129dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="100dp"
+        android:layout_marginLeft="100dp"
+        android:text="Далее"
+        android:gravity="center"
+        android:textColor="#000000"
+        android:textSize="15dp"
+        android:clickable="true"
+        android:textStyle="bold" />
+
+
+    <TextView
+        android:id="@+id/textViewFour"
+        android:layout_width="263dp"
+        android:layout_height="67dp"
+        android:layout_below="@+id/textViewOne"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="75dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginBottom="3dp"
+        android:clickable="true"
+        android:gravity="center"
+        android:text="Выберите пять тем, которые вам нраввятся или с которыми вы себя ассоциируете"
+        android:textColor="#000000"
+        android:textSize="13dp" />
+
+    <Button
+        android:id="@+id/selectButtonModa"
+        android:layout_width="wrap_content"
+        android:layout_height="36dp"
+        android:layout_below="@+id/textViewFour"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="38dp"
+        android:background="@drawable/rounded_button"
+        android:elevation="4dp"
+        android:gravity="center"
+        android:paddingStart="16dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="8dp"
+        android:text="Мода"
+        android:textColor="@android:color/white"
+        android:textSize="12dp" />
+
+    <Button
+        android:id="@+id/selectButtonDisain"
+        android:layout_width="wrap_content"
+        android:layout_height="36dp"
+        android:layout_below="@+id/selectButtonModa"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/rounded_button"
+        android:elevation="4dp"
+        android:gravity="center"
+        android:paddingStart="16dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="8dp"
+        android:text="Дизайн"
+        android:textColor="@android:color/white"
+        android:textSize="12dp" />
+
+    <Button
+        android:id="@+id/selectButtonRisov"
+        android:layout_width="wrap_content"
+        android:layout_height="36dp"
+        android:layout_below="@+id/textViewFour"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="39dp"
+        android:layout_toEndOf="@+id/selectButtonModa"
+        android:background="@drawable/rounded_button"
+        android:elevation="4dp"
+        android:gravity="center"
+        android:paddingStart="16dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="8dp"
+        android:text="Рисование"
+        android:textColor="@android:color/white"
+        android:textSize="12dp" />
+
+    <Button
+        android:id="@+id/selectButtonKino"
+        android:layout_width="wrap_content"
+        android:layout_height="36dp"
+        android:layout_below="@+id/textViewFour"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="39dp"
+        android:layout_toEndOf="@+id/selectButtonRisov"
+        android:background="@drawable/rounded_button"
+        android:elevation="4dp"
+        android:gravity="center"
+        android:paddingStart="16dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="8dp"
+        android:text="Кино"
+        android:textColor="@android:color/white"
+        android:textSize="12dp" />
+
+    <Button
+        android:id="@+id/selectButtonMusic"
+        android:layout_width="wrap_content"
+        android:layout_height="36dp"
+        android:layout_below="@+id/selectButtonRisov"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="11dp"
+        android:layout_toEndOf="@+id/selectButtonDisain"
+        android:background="@drawable/rounded_button"
+        android:elevation="4dp"
+        android:gravity="center"
+        android:paddingStart="16dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="8dp"
+        android:text="Музыка"
+        android:textColor="@android:color/white"
+        android:textSize="12dp" />
+
+    <Button
+        android:id="@+id/selectButtonTanec"
+        android:layout_width="wrap_content"
+        android:layout_height="36dp"
+        android:layout_below="@+id/selectButtonKino"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="11dp"
+        android:layout_toEndOf="@+id/selectButtonMusic"
+        android:background="@drawable/rounded_button"
+        android:elevation="4dp"
+        android:gravity="center"
+        android:paddingStart="16dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="8dp"
+        android:text="Танцы"
+        android:textColor="@android:color/white"
+        android:textSize="12dp" />
+
+
+</RelativeLayout>

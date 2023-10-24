@@ -21,11 +21,17 @@ class StepOneActivity : AppCompatActivity() {
         sharedPreferences = getSharedPreferences("MyPreferences", MODE_PRIVATE)
 
         val enteredText = sharedPreferences.getString("enteredText", null)
+        val savedName = sharedPreferences.getString("characterName", null)
 
         //val editor = sharedPreferences.edit()
         //editor.remove("enteredText")
         //editor.apply()
 
+        if (savedName != null) {
+            val intent = Intent(this, PurposesActivity::class.java)
+            intent.putExtra("characterName", savedName)
+            startActivity(intent)
+        }
         if (enteredText != null) {
             val intent = Intent(this, StepTwoActivity::class.java)
             intent.putExtra("textToPass", enteredText)
