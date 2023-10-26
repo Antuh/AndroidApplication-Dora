@@ -13,6 +13,8 @@ class InterestsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_interests)
 
+        val imageByteArray = intent.getByteArrayExtra("imageByteArray")
+
         val ModaButton = findViewById<Button>(R.id.selectButtonModa)
         val KinoButton = findViewById<Button>(R.id.selectButtonKino)
         val RisovButton = findViewById<Button>(R.id.selectButtonRisov)
@@ -45,6 +47,9 @@ class InterestsActivity : AppCompatActivity() {
                 val characterName = intent.getStringExtra("characterName")
                 val purposeIntent = Intent(this, PurposesActivity::class.java)
                 purposeIntent.putExtra("characterName", characterName)
+
+                // Передача массива байтов в следующую активность
+                purposeIntent.putExtra("imageByteArray", imageByteArray)
                 startActivity(purposeIntent)
             }
         }

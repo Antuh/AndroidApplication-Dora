@@ -5,7 +5,9 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.drawable.BitmapDrawable
 import android.os.Build
 import android.os.Bundle
 import android.widget.Button
@@ -13,6 +15,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import java.io.ByteArrayOutputStream
 
 class NotificationsActivity : AppCompatActivity() {
     private var selectedButton: Button? = null
@@ -29,8 +32,7 @@ class NotificationsActivity : AppCompatActivity() {
         val imageByteArray = intent.getByteArrayExtra("imageByteArray")
 
         if (imageByteArray != null) {
-            val selectedImage =
-                BitmapFactory.decodeByteArray(imageByteArray, 0, imageByteArray.size)
+            val selectedImage = BitmapFactory.decodeByteArray(imageByteArray, 0, imageByteArray.size)
             val imageView = findViewById<ImageView>(R.id.your_image_view_id)
             imageView.setImageBitmap(selectedImage)
 
@@ -57,26 +59,24 @@ class NotificationsActivity : AppCompatActivity() {
         }
         chooseButton.setOnClickListener {
             if (selectedButton != null) {
-                when (selectedButton) {
-                    RazrButton -> {
-                        if (isNotificationPermissionGranted()) {
-                            val characterName = intent.getStringExtra("characterName")
-                            val purposeIntent = Intent(this, InterestsActivity::class.java)
-                            purposeIntent.putExtra("characterName", characterName)
-                            startActivity(purposeIntent)
-                        } else {
-                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                                requestNotificationPermission()
-                            }
-                        }
-                    }
-                    NoRazrButton -> {
-                        val characterName = intent.getStringExtra("characterName")
-                        val purposeIntent = Intent(this, InterestsActivity::class.java)
-                        purposeIntent.putExtra("characterName", characterName)
-                        startActivity(purposeIntent)
-                    }
+                val characterName = intent.getStringExtra("characterName")
+                val interestsIntent = Intent(this, InterestsActivity::class.java)
+                interestsIntent.putExtra("characterName", characterName)
+
+                // Получение изображения
+                val imageView = findViewById<ImageView>(R.id.your_image_view_id)
+                val drawable = imageView.drawable
+                if (drawable is BitmapDrawable) {
+                    val bitmap = drawable.bitmap
+                    val stream = ByteArrayOutputStream()
+                    bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream)
+                    val imageByteArray = stream.toByteArray()
+
+                    // Передача массива байтов в активность InterestsActivity
+                    interestsIntent.putExtra("imageByteArray", imageByteArray)
                 }
+
+                startActivity(interestsIntent)
             }
         }
     }
@@ -90,36 +90,5 @@ class NotificationsActivity : AppCompatActivity() {
             val channel = NotificationChannel(NOTIFICATION_CHANNEL_ID, name, importance)
             notificationManager.createNotificationChannel(channel)
         }
-    }
-
-    @RequiresApi(Build.VERSION_CODES.O)
-    private fun requestNotificationPermission() {
-        val alertDialog = AlertDialog.Builder(this)
-            .setTitle("Permission Required")
-            .setMessage("To show notifications, we need permission to vibrate.")
-            .setPositiveButton("OK") { dialog, _ ->
-                val intent = Intent()
-                intent.action = "android.settings.APP_NOTIFICATION_SETTINGS"
-                intent.putExtra("app_package", packageName)
-                intent.putExtra("app_uid", applicationInfo.uid)
-                startActivity(intent)
-                dialog.dismiss()
-            }
-            .setNegativeButton("Cancel") { dialog, _ ->
-                dialog.dismiss()
-            }
-            .create()
-        alertDialog.show()
-    }
-
-    private fun isNotificationPermissionGranted(): Boolean {
-        val notificationManager =
-            getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val channel =
-                notificationManager.getNotificationChannel(NOTIFICATION_CHANNEL_ID)
-            return channel?.importance != NotificationManager.IMPORTANCE_NONE
-        }
-        return true
     }
 }
