@@ -49,7 +49,7 @@
         android:layout_marginTop="35dp"
         android:clickable="true"
         android:gravity="center"
-        android:text="Шаг 8/10"
+        android:text="Шаг 8/9"
         android:textColor="#000000"
         android:textSize="15dp"
         android:textStyle="bold" />
