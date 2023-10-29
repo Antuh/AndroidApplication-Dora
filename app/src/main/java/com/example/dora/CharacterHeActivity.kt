@@ -28,13 +28,18 @@ class CharacterHeActivity : AppCompatActivity() {
         val avatar1 = findViewById<ImageView>(R.id.avatar1)
         val avatar2 = findViewById<ImageView>(R.id.avatar2)
         val avatar3 = findViewById<ImageView>(R.id.avatar3)
+        val avatar4 = findViewById<ImageView>(R.id.avatar4)
+        val avatar5 = findViewById<ImageView>(R.id.avatar5)
 
-        avatar1.setOnClickListener { selectCharacter(R.drawable.characterone) }
-        avatar2.setOnClickListener { selectCharacter(R.drawable.avatartwo) }
-        avatar3.setOnClickListener { selectCharacter(R.drawable.avatarthree) }
+        avatar1.setOnClickListener { selectCharacter(R.drawable.femaleonewindowone) }
+        avatar2.setOnClickListener { selectCharacter(R.drawable.maleonewindowone) }
+        avatar3.setOnClickListener { selectCharacter(R.drawable.femaletwowindowtwo) }
+        avatar4.setOnClickListener { selectCharacter(R.drawable.maletwowindowtwo) }
+        avatar5.setOnClickListener { selectCharacter(R.drawable.femalethreewindowthree) }
 
         val chooseButton = findViewById<TextView>(R.id.chooseButton)
         chooseButton.setOnClickListener { onChooseButtonClick() }
+
     }
 
     private fun selectCharacter(imageResource: Int) {

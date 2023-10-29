@@ -39,11 +39,15 @@
 
     <ImageView
         android:id="@+id/selectedCharacterImageView"
-        android:layout_width="339dp"
-        android:layout_height="558dp"
+        android:layout_width="match_parent"
+        android:layout_height="550dp"
         android:layout_below="@+id/textViewOne"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="0dp"
         android:layout_marginLeft="40dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="77dp"
+        android:layout_marginBottom="0dp"
         android:visibility="invisible" />
 
     <LinearLayout
@@ -78,20 +82,22 @@
             android:layout_marginStart="5dp"
             android:layout_marginEnd="5dp"
             android:src="@drawable/avatarthree" />
+
         <ImageView
             android:id="@+id/avatar4"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginStart="5dp"
             android:layout_marginEnd="5dp"
-            android:src="@drawable/avatarthree" />
+            android:src="@drawable/avatarfour" />
+
         <ImageView
             android:id="@+id/avatar5"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginStart="5dp"
             android:layout_marginEnd="5dp"
-            android:src="@drawable/avatarthree" />
+            android:src="@drawable/avatarfive" />
     </LinearLayout>
 
     <TextView

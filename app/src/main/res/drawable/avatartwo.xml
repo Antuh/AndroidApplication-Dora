@@ -7,5 +7,9 @@
         </shape>
     </item>
     <item
-        android:drawable="@drawable/characterthree" />>
+        android:drawable="@drawable/maleone"
+        android:left="105dp"
+        android:right="105dp"
+        android:top="105dp"
+        android:bottom="105dp" />
 </layer-list>

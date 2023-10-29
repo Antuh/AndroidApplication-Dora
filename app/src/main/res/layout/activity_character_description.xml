@@ -41,11 +41,11 @@
     <ImageView
         android:id="@+id/your_image_view_id"
         android:layout_width="match_parent"
-        android:layout_height="598dp"
+        android:layout_height="538dp"
         android:layout_below="@+id/textViewOne"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="29dp"
-        android:layout_marginBottom="2dp"
+        android:layout_marginTop="88dp"
+        android:layout_marginBottom="0dp"
         android:scaleType="fitCenter" />
 
     <SeekBar
