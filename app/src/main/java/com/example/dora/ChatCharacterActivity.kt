@@ -23,6 +23,7 @@ class ChatCharacterActivity : AppCompatActivity() {
     lateinit var messageList: MutableList<Message>
     lateinit var messageAdapter: MessageAdapter
     val client = OkHttpClient()
+    lateinit var prompt: String // Объявите переменную prompt
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,25 +40,31 @@ class ChatCharacterActivity : AppCompatActivity() {
         recyclerView.layoutManager = layoutManager
 
         val botName = "Александр" // Имя бота
-        val botCharacterTrait = "Злой" // Характер бота
-        val prompt = "$botCharacterTrait $botName: " // prompt
+        val botCharacterTrait = "Очень злой" // Характер бота
+        val userName = "Арсений"
+        prompt = "Ты виртуальный друг, твой характер $botCharacterTrait, твое имя $botName, имя собеседника $userName, ты поддерживаешь его в разговоре." // prompt
+
+        // Проверка, чтобы сообщение "Ты виртуальный друг, твой характер" не отображалось
+        addToChat(prompt, Message.SENT_BY_BOT)
+        callAPI(prompt)
+        welcomeText.visibility = View.GONE
 
         sendButton.setOnClickListener {
             val question = messageEditText.text.toString().trim { it <= ' ' }
-            val fullPrompt = "$prompt $question"
-
             addToChat(question, Message.SENT_BY_ME)
             messageEditText.setText("")
-            callAPI(fullPrompt)
-            welcomeText.visibility = View.GONE
+            callAPI(question)
         }
     }
 
     private fun addToChat(message: String, sentBy: String) {
-        runOnUiThread {
-            messageList.add(Message(message, sentBy))
-            messageAdapter.notifyDataSetChanged()
-            recyclerView.smoothScrollToPosition(messageAdapter.itemCount)
+        // Проверка, чтобы сообщение "Ты виртуальный друг, твой характер" не отображалось
+        if (message != prompt) {
+            runOnUiThread {
+                messageList.add(Message(message, sentBy))
+                messageAdapter.notifyDataSetChanged()
+                recyclerView.smoothScrollToPosition(messageAdapter.itemCount)
+            }
         }
     }
 
@@ -72,7 +79,7 @@ class ChatCharacterActivity : AppCompatActivity() {
         try {
             jsonBody.put("model", "text-davinci-003")
             jsonBody.put("prompt", prompt)
-            jsonBody.put("max_tokens", 4000)
+            jsonBody.put("max_tokens", 1000)
             jsonBody.put("temperature", 0.0)
         } catch (e: JSONException) {
             e.printStackTrace()

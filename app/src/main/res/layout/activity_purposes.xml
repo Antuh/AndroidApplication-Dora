@@ -120,7 +120,7 @@
         android:paddingTop="8dp"
         android:paddingEnd="16dp"
         android:paddingBottom="8dp"
-        android:text="Поделится эмоциями"
+        android:text="Поделиться эмоциями"
         android:textColor="@android:color/white"
         android:textSize="14dp"
         android:textAllCaps="false"/>
