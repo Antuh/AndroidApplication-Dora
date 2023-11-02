@@ -10,9 +10,11 @@
         android:layout_height="36dp"
         android:layout_below="@+id/textViewTwo"
         android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
         android:layout_marginStart="90dp"
         android:layout_marginLeft="100dp"
         android:layout_marginTop="14dp"
+        android:layout_marginEnd="90dp"
         android:layout_marginBottom="3dp"
         android:clickable="true"
         android:gravity="center"
@@ -22,16 +24,17 @@
         android:textStyle="bold" />
 
 
-
     <TextView
         android:id="@+id/textViewTwo"
         android:layout_width="117dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
         android:layout_marginStart="149dp"
         android:layout_marginLeft="100dp"
         android:layout_marginTop="35dp"
+        android:layout_marginEnd="149dp"
         android:clickable="true"
         android:gravity="center"
         android:text="Шаг 7/9"
@@ -44,17 +47,19 @@
         android:id="@+id/chooseButton"
         android:layout_width="129dp"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="100dp"
+        android:layout_marginStart="141dp"
         android:layout_marginLeft="100dp"
-        android:text="Далее"
+        android:layout_marginEnd="141dp"
+        android:layout_marginBottom="98dp"
+        android:clickable="true"
         android:gravity="center"
+        android:text="Далее"
         android:textColor="#000000"
         android:textSize="15dp"
-        android:clickable="true"
         android:textStyle="bold" />
-
 
     <TextView
         android:id="@+id/textViewFour"
@@ -68,7 +73,7 @@
         android:layout_marginBottom="3dp"
         android:clickable="true"
         android:gravity="center"
-        android:text="Выберите пять тем, которые вам нраввятся или с которыми вы себя ассоциируете"
+        android:text="Выберите пять тем, которые вам нравятся или с которыми вы себя ассоциируете"
         android:textColor="#000000"
         android:textSize="13dp" />
 
@@ -77,6 +82,8 @@
         android:layout_width="wrap_content"
         android:layout_height="36dp"
         android:layout_below="@+id/textViewFour"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="50dp"
         android:layout_marginLeft="50dp"
         android:layout_marginTop="38dp"
         android:background="@drawable/rounded_button"
@@ -87,14 +94,17 @@
         android:paddingEnd="16dp"
         android:paddingBottom="8dp"
         android:text="Мода"
+        android:textAllCaps="false"
         android:textColor="@android:color/white"
-        android:textSize="12dp" />
+        android:textSize="14dp" />
 
     <Button
         android:id="@+id/selectButtonDisain"
         android:layout_width="wrap_content"
         android:layout_height="36dp"
         android:layout_below="@+id/selectButtonModa"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="50dp"
         android:layout_marginLeft="50dp"
         android:layout_marginTop="12dp"
         android:background="@drawable/rounded_button"
@@ -106,7 +116,8 @@
         android:paddingBottom="8dp"
         android:text="Дизайн"
         android:textColor="@android:color/white"
-        android:textSize="12dp" />
+        android:textSize="14dp"
+        android:textAllCaps="false" />
 
     <Button
         android:id="@+id/selectButtonRisov"
@@ -126,16 +137,19 @@
         android:paddingBottom="8dp"
         android:text="Рисование"
         android:textColor="@android:color/white"
-        android:textSize="12dp" />
+        android:textSize="14dp"
+        android:textAllCaps="false"/>
 
     <Button
         android:id="@+id/selectButtonKino"
         android:layout_width="wrap_content"
         android:layout_height="36dp"
         android:layout_below="@+id/textViewFour"
+        android:layout_alignParentEnd="true"
         android:layout_marginStart="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="39dp"
+        android:layout_marginEnd="61dp"
         android:layout_toEndOf="@+id/selectButtonRisov"
         android:background="@drawable/rounded_button"
         android:elevation="4dp"
@@ -146,7 +160,8 @@
         android:paddingBottom="8dp"
         android:text="Кино"
         android:textColor="@android:color/white"
-        android:textSize="12dp" />
+        android:textSize="14dp"
+        android:textAllCaps="false" />
 
     <Button
         android:id="@+id/selectButtonMusic"
@@ -166,16 +181,19 @@
         android:paddingBottom="8dp"
         android:text="Музыка"
         android:textColor="@android:color/white"
-        android:textSize="12dp" />
+        android:textSize="14dp"
+        android:textAllCaps="false" />
 
     <Button
         android:id="@+id/selectButtonTanec"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="36dp"
         android:layout_below="@+id/selectButtonKino"
+        android:layout_alignParentEnd="true"
         android:layout_marginStart="10dp"
         android:layout_marginLeft="50dp"
         android:layout_marginTop="11dp"
+        android:layout_marginEnd="65dp"
         android:layout_toEndOf="@+id/selectButtonMusic"
         android:background="@drawable/rounded_button"
         android:elevation="4dp"
@@ -185,8 +203,9 @@
         android:paddingEnd="16dp"
         android:paddingBottom="8dp"
         android:text="Танцы"
+        android:textAllCaps="false"
         android:textColor="@android:color/white"
-        android:textSize="12dp" />
+        android:textSize="14dp" />
 
 
 </RelativeLayout>

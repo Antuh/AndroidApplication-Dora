@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegistrationActivity">
+
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="-150dp"
+        app:srcCompat="@drawable/android_large___45_3_" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="match_parent"
+        android:layout_height="656dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="-78dp"
+        app:srcCompat="@drawable/rectangle_3034" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="316dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/imageView6"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginStart="44dp"
+        android:layout_marginLeft="44dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:gravity="center"
+        android:text="Создать учётную запись"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/textInputEmail"
+        android:layout_width="342dp"
+        android:layout_height="42dp"
+        android:layout_below="@+id/textView"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="36dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="33dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/custom_border_background"
+        android:hint="Введите ваш email"
+        android:paddingStart="15dp"
+        android:paddingLeft="15dp"
+        android:textSize="14dp" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/textInputPassword"
+        android:layout_width="344dp"
+        android:layout_height="42dp"
+        android:layout_below="@+id/textInputEmail"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="35dp"
+        android:layout_marginLeft="36dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginEnd="33dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/custom_border_background"
+        android:hint="Придумайте пароль"
+        android:paddingStart="15dp"
+        android:paddingLeft="15dp"
+        android:textSize="14dp" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/textInputPasswordPowtor"
+        android:layout_width="343dp"
+        android:layout_height="42dp"
+        android:layout_below="@+id/textInputPassword"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="35dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="33dp"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/custom_border_background"
+        android:hint="Повторите пароль"
+        android:paddingStart="15dp"
+        android:paddingLeft="15dp"
+        android:textSize="14dp" />
+
+    <Button
+        android:id="@+id/selectButtonRegistration"
+        android:layout_width="335dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textInputPasswordPowtor"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="43dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="33dp"
+        android:background="@drawable/rounded_button"
+        android:elevation="4dp"
+        android:gravity="center"
+        android:paddingStart="16dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="8dp"
+        android:text="Зарегистрироваться"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white" />
+
+
+</RelativeLayout>
