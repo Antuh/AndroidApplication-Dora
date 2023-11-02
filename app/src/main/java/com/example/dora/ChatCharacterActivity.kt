@@ -17,13 +17,12 @@ import java.io.IOException
 class ChatCharacterActivity : AppCompatActivity() {
     val API_KEY = "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"
     lateinit var recyclerView: RecyclerView
-    lateinit var welcomeText :TextView
-    lateinit var messageEditText:EditText
-    lateinit var sendButton:ImageButton
-    lateinit var messageList:MutableList<Message>
-    lateinit var messageAdapter:MessageAdapter
+    lateinit var welcomeText: TextView
+    lateinit var messageEditText: EditText
+    lateinit var sendButton: ImageButton
+    lateinit var messageList: MutableList<Message>
+    lateinit var messageAdapter: MessageAdapter
     val client = OkHttpClient()
-    //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
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,76 +34,79 @@ class ChatCharacterActivity : AppCompatActivity() {
         sendButton = findViewById(R.id.send_bt)
         messageAdapter = MessageAdapter(messageList)
         recyclerView.adapter = messageAdapter
-        val layoutManger = LinearLayoutManager(this)
-        layoutManger.stackFromEnd = true
-        recyclerView.layoutManager = layoutManger
+        val layoutManager = LinearLayoutManager(this)
+        layoutManager.stackFromEnd = true
+        recyclerView.layoutManager = layoutManager
+
+        val botName = "Александр" // Имя бота
+        val botCharacterTrait = "Злой" // Характер бота
+        val prompt = "$botCharacterTrait $botName: " // prompt
 
         sendButton.setOnClickListener {
-            val question = messageEditText.text.toString().trim{ it <= ' '}
-            addToChat(question,Message.SENT_BY_ME)
+            val question = messageEditText.text.toString().trim { it <= ' ' }
+            val fullPrompt = "$prompt $question"
+
+            addToChat(question, Message.SENT_BY_ME)
             messageEditText.setText("")
-            callAPI(question)
+            callAPI(fullPrompt)
             welcomeText.visibility = View.GONE
         }
     }
 
     private fun addToChat(message: String, sentBy: String) {
-        runOnUiThread{
-            messageList.add(Message(message,sentBy))
+        runOnUiThread {
+            messageList.add(Message(message, sentBy))
             messageAdapter.notifyDataSetChanged()
             recyclerView.smoothScrollToPosition(messageAdapter.itemCount)
         }
-
     }
 
-    fun addResponse(response:String?){
-        messageList.removeAt(messageList.size -1)
-        addToChat(response!!,Message.SENT_BY_BOT)
-
+    fun addResponse(response: String?) {
+        messageList.removeAt(messageList.size - 1)
+        addToChat(response!!, Message.SENT_BY_BOT)
     }
 
-    private fun callAPI(question: String) {
-        messageList.add(Message("Печатает...",Message.SENT_BY_BOT))
+    private fun callAPI(prompt: String) {
+        messageList.add(Message("Печатает...", Message.SENT_BY_BOT))
         val jsonBody = JSONObject()
         try {
             jsonBody.put("model", "text-davinci-003")
-            jsonBody.put("prompt", question)
+            jsonBody.put("prompt", prompt)
             jsonBody.put("max_tokens", 4000)
-            jsonBody.put("temperature", 0)
-        }catch (e:JSONException){
+            jsonBody.put("temperature", 0.0)
+        } catch (e: JSONException) {
             e.printStackTrace()
         }
-        val body :RequestBody = RequestBody.create(JSON,jsonBody.toString())
-        val request:Request = Request.Builder()
+        val body: RequestBody = RequestBody.create(JSON, jsonBody.toString())
+        val request: Request = Request.Builder()
             .url("https://api.openai.com/v1/completions")
             .header("Authorization", "Bearer $API_KEY")
             .post(body)
             .build()
-        client.newCall(request).enqueue(object :Callback{
+        client.newCall(request).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
                 addResponse("Failed to load response due to ${e.message}")
             }
 
             override fun onResponse(call: Call, response: Response) {
-                if (response.isSuccessful){
-                    var jsonObject :JSONObject? = null
+                if (response.isSuccessful) {
+                    var jsonObject: JSONObject? = null
                     try {
                         jsonObject = JSONObject(response.body!!.string())
                         val jsonArray = jsonObject.getJSONArray("choices")
                         val result = jsonArray.getJSONObject(0).getString("text")
-                        addResponse(result.trim{it <= ' '})
-                    }catch (e:JSONException){
+                        addResponse(result.trim { it <= ' ' })
+                    } catch (e: JSONException) {
                         e.printStackTrace()
                     }
-                }else{
+                } else {
                     addResponse("Failed to load response due to ${response.body.toString()}")
                 }
             }
-
         })
-
     }
-    companion object{
-        val JSON :MediaType = "application/json; charset=utf-8".toMediaType()
+
+    companion object {
+        val JSON: MediaType = "application/json; charset=utf-8".toMediaType()
     }
 }
