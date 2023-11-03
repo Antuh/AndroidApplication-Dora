@@ -25,16 +25,18 @@ class CharacterNameActivity : AppCompatActivity() {
         val editText = findViewById<EditText>(R.id.textInputs)
 
         if (imageByteArray != null) {
-            val selectedImage =
-                BitmapFactory.decodeByteArray(imageByteArray, 0, imageByteArray.size)
+            val selectedImage = BitmapFactory.decodeByteArray(imageByteArray, 0, imageByteArray.size)
             imageView.setImageBitmap(selectedImage)
-            sharedPreferences.edit().putBoolean("imageLoaded", true).apply()
         }
 
         button.setOnClickListener {
             val enteredName = editText.text.toString()
 
             if (enteredName.isNotEmpty()) {
+                val editor = sharedPreferences.edit()
+                editor.putString("characterName", enteredName)
+                editor.apply()
+
                 val intent = Intent(this, NotificationsActivity::class.java)
                 intent.putExtra("imageByteArray", imageByteArray)
                 intent.putExtra("characterName", enteredName)

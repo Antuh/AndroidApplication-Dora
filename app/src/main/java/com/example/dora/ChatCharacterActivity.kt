@@ -1,5 +1,6 @@
 package com.example.dora
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -23,7 +24,7 @@ class ChatCharacterActivity : AppCompatActivity() {
     lateinit var messageList: MutableList<Message>
     lateinit var messageAdapter: MessageAdapter
     val client = OkHttpClient()
-    lateinit var prompt: String // Объявите переменную prompt
+    lateinit var prompt: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,10 +40,14 @@ class ChatCharacterActivity : AppCompatActivity() {
         layoutManager.stackFromEnd = true
         recyclerView.layoutManager = layoutManager
 
-        val botName = "Александр" // Имя бота
+        val sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+        val characterName = sharedPreferences.getString("characterName", "Stranger")
+        val userNameEdit = sharedPreferences.getString("enderedText", "Stranger")
+
+        val botName = characterName
         val botCharacterTrait = "Очень злой" // Характер бота
-        val userName = "Арсений"
-        prompt = "Ты виртуальный друг, твой характер $botCharacterTrait, твое имя $botName, имя собеседника $userName, ты поддерживаешь его в разговоре." // prompt
+        val userName = userNameEdit
+        prompt = "Ты виртуальный друг, твой характер $botCharacterTrait, тебя зовут $botName, имя собеседника $userName, ты сначала приветсвуешь и говришь свое имя." // prompt
 
         // Проверка, чтобы сообщение "Ты виртуальный друг, твой характер" не отображалось
         addToChat(prompt, Message.SENT_BY_BOT)
