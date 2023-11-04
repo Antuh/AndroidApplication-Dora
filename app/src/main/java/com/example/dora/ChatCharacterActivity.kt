@@ -43,11 +43,15 @@ class ChatCharacterActivity : AppCompatActivity() {
         val sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
         val characterName = sharedPreferences.getString("characterName", "Stranger")
         val userNameEdit = sharedPreferences.getString("enderedText", "Stranger")
+        val characterOne = sharedPreferences.getString("characterOne", "Неопределён")
+        val characterTwo = sharedPreferences.getString("characterTwo", "Неопределён")
+        val characterThree = sharedPreferences.getString("characterThree", "Неопределён")
+
 
         val botName = characterName
-        val botCharacterTrait = "Очень злой" // Характер бота
+        val botCharacterTrait = "$characterOne $characterTwo $characterThree"
         val userName = userNameEdit
-        prompt = "Ты виртуальный друг, твой характер $botCharacterTrait, тебя зовут $botName, имя собеседника $userName, ты сначала приветсвуешь и говришь свое имя." // prompt
+        prompt = "Ты виртуальный друг, твой характер $botCharacterTrait, тебя зовут $botName, имя собеседника $userName, ты сначала приветсвуешь и говоришь свое имя, а так же поддерживаешь разговор." // prompt
 
         // Проверка, чтобы сообщение "Ты виртуальный друг, твой характер" не отображалось
         addToChat(prompt, Message.SENT_BY_BOT)

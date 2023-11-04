@@ -1,5 +1,6 @@
 package com.example.dora
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.content.Intent
 import android.os.Bundle
@@ -13,9 +14,10 @@ class StepTwoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_step_two)
-        val receivedText = intent.getStringExtra("textToPass")
+        val sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+        val username = sharedPreferences.getString("enderedText", "Stranger")
         val textView: TextView = findViewById(R.id.receivedText)
-        textView.text = "Привет, $receivedText"
+        textView.text = "Привет, $username"
         val HeButton = findViewById<Button>(R.id.selectButtonHe)
         val SheButton = findViewById<Button>(R.id.selectButtonShe)
         val TheyButton = findViewById<Button>(R.id.selectButtonThey)
