@@ -1,5 +1,6 @@
 package com.example.dora
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -28,6 +29,9 @@ class InterestsActivity : AppCompatActivity() {
 
         val buttons = arrayOf(ModaButton, KinoButton, RisovButton, DisainButton, MusicButton, TanecButton)
 
+        // Восстановление выбранных интересов из настроек
+        restoreSelectedInterests()
+
         for (i in buttons.indices) {
             buttons[i].setOnClickListener {
                 if (selectedButtons.contains(buttons[i])) {
@@ -50,8 +54,41 @@ class InterestsActivity : AppCompatActivity() {
 
                 // Передача массива байтов в следующую активность
                 purposeIntent.putExtra("imageByteArray", imageByteArray)
+                saveSelectedInterests()
                 startActivity(purposeIntent)
             }
         }
+    }
+
+    private fun restoreSelectedInterests() {
+        val sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+        val selectedInterestsText = sharedPreferences.getString("selectedInterests", "")
+        val selectedInterests = selectedInterestsText?.split(",") ?: emptyList()
+
+        val buttons = arrayOf(
+            findViewById<Button>(R.id.selectButtonModa),
+            findViewById<Button>(R.id.selectButtonKino),
+            findViewById<Button>(R.id.selectButtonRisov),
+            findViewById<Button>(R.id.selectButtonDisain),
+            findViewById<Button>(R.id.selectButtonMusic),
+            findViewById<Button>(R.id.selectButtonTanec)
+        )
+
+        for (i in buttons.indices) {
+            if (selectedInterests.contains(buttons[i].text.toString())) {
+                selectedButtons.add(buttons[i])
+                buttons[i].setBackgroundResource(R.drawable.gradient_button)
+            }
+        }
+    }
+
+    private fun saveSelectedInterests() {
+        val sharedPreferences = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+
+        val selectedInterestsText = selectedButtons.map { it.text.toString() }.joinToString(",")
+        editor.putString("selectedInterests", selectedInterestsText)
+
+        editor.apply()
     }
 }
